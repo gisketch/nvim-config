@@ -1,4 +1,4 @@
-local alpha = require'alpha'
+local alpha = require 'alpha'
 local dashboard = require 'alpha.themes.dashboard'
 dashboard.section.header.val = {
     [[        _     _        _       _     ]],
@@ -13,8 +13,7 @@ dashboard.section.header.val = {
 dashboard.section.buttons.val = {
     dashboard.button("e", "View Sessions", ":SearchSession<CR>"),
     dashboard.button("pv", "Project Viewer",
-        ":Telescope file_browser path=" .. vim.fn.escape(vim.fn.getcwd(), ' ') .. " select_buffer=true<CR>"
-    ),
+        ":Oil --float<CR>"),
     dashboard.button("pf", "Project Files", ":lua require('telescope.builtin').find_files()<CR>"),
     dashboard.button("q", "Quit NVIM", ":qa<CR>"),
 }

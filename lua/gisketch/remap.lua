@@ -6,7 +6,7 @@ vim.g.mapleader = " "
 vim.api.nvim_set_keymap(
     "n",
     "<leader>pv",
-    ":Telescope file_browser path=" .. vim.fn.escape(vim.fn.getcwd(), ' ') .. " select_buffer=true<CR>",
+    ":Oil --float<CR>",
     { noremap = true }
 )
 
@@ -22,6 +22,9 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+vim.keymap.set("n", "<leader>o", "o<Esc>^")
+
+vim.keymap.set("n", "<leader>O", "O<Esc>^")
 -- greatest remap ever
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
@@ -31,7 +34,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
-vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 
 
 -- This is going to get me cancelled
@@ -48,9 +50,13 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.dotfiles/nvim/.config/nvim/lua/theprimeagen/packer.lua<CR>");
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
-
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+
+vim.api.nvim_set_keymap('i', '<C-H>', '<C-Left>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('i', '<C-L>', '<C-Right>', { noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+
