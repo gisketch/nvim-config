@@ -58,5 +58,10 @@ end)
 vim.api.nvim_set_keymap('i', '<C-H>', '<C-Left>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-L>', '<C-Right>', { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 
+vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
+vim.keymap.set("n", "<leader>gcu", "<cmd>GitBlameCopyCommitURL<CR>")
+vim.keymap.set("n", "<leader>bt", "<cmd>GitBlameToggle<CR>")
+
+vim.keymap.set("n", "<leader>mtt", "<cmd>TransparentToggle<CR>")
+vim.keymap.set("n", "<leader>mlh", "<cmd>Noice telescope<CR>")
