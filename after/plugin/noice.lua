@@ -1,4 +1,13 @@
 require("noice").setup({
+    mini = {
+        border = {
+            style = "rounded",
+            padding = { 0, 1 },
+        },
+        win_options = {
+            winblend = 0,
+        },
+    },
     lsp = {
         progress = {
             enabled = false,
