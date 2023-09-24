@@ -5,7 +5,16 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
     },
+    opts = {
+        inlay_hints = { enabled = true },
+    },
     config = function()
+        vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
+            callback = function() vim.lsp.inlay_hint(0, true) end,
+        })
+        vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+            callback = function() vim.lsp.inlay_hint(0, false) end,
+        })
         -- import lspconfig plugin
         local lspconfig = require("lspconfig")
 
@@ -80,6 +89,18 @@ return {
         lspconfig["tsserver"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            init_options = {
+                preferences = {
+                    includeInlayParameterNameHints = "all",
+                    includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                    includeInlayFunctionParameterTypeHints = true,
+                    includeInlayVariableTypeHints = true,
+                    includeInlayPropertyDeclarationTypeHints = true,
+                    includeInlayFunctionLikeReturnTypeHints = true,
+                    includeInlayEnumMemberValueHints = true,
+                    importModuleSpecifierPreference = 'non-relative'
+                },
+            },
         })
 
         -- configure css server
@@ -121,6 +142,9 @@ return {
             settings = { -- custom settings for lua
                 Lua = {
                     -- make the language server recognize "vim" global
+                    hint = {
+                        enable = true,
+                    },
                     diagnostics = {
                         globals = { "vim" },
                     },
@@ -134,5 +158,16 @@ return {
                 },
             },
         })
+
+        vim.diagnostic.config { float = { border = "rounded" }, }
+        vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+            vim.lsp.handlers.hover,
+            { border = 'rounded' }
+        )
+
+        vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+            vim.lsp.handlers.signature_help,
+            { border = 'rounded' }
+        )
     end,
 }

@@ -1,2 +1,0 @@
-return { "kdheepak/tabline.nvim" }
-

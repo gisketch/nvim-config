@@ -10,7 +10,7 @@ require("noice").setup({
     },
     lsp = {
         progress = {
-            enabled = false,
+            enabled = true,
         },
         -- OPTIONAL:
         --   `nvim-notify` is only needed, if you want to use the notification view.
