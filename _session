@@ -1,26 +1,14 @@
 vim.g.mapleader = " "
 
 -- vim.keymap.set("n", "<leader>e", ':Telescope projects<CR>',{ noremap = true, silent = true })
--- Define a local function to open :Oil and then preview
-function open_oil_and_preview()
-    -- Open :Oil
-    vim.cmd("Oil")
-
-    -- Wait a bit to ensure :Oil has fully loaded
-    vim.cmd("sleep 50m")
-
-    -- Call the actions.preview callback function
-    require('oil.actions').preview.callback()
-end
 
 -- open file_browser with the path of the current buffer
 vim.api.nvim_set_keymap(
     "n",
     "<leader>pv",
     ":Oil<CR>",
-    { noremap = true, silent = true }
+    { noremap = true }
 )
-
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -65,7 +53,6 @@ end)
 
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>")
 vim.keymap.set("n", "<leader>gcu", "<cmd>GitBlameCopyCommitURL<CR>")
-vim.keymap.set("n", "<leader>gco", "<cmd>GitBlameOpenCommitURL<CR>")
 
 vim.keymap.set("n", "<leader>bt", "<cmd>GitBlameToggle<CR>")
 vim.keymap.set("n", "<leader>mnp", "<cmd>NoNeckPain<CR>")
@@ -104,7 +91,7 @@ vim.api.nvim_set_keymap(
 save_session = function()
     local session_name = vim.fn.input("Enter session name: ")
     if session_name ~= "" then
-        local cmd = "mksession! ~/.vim/sessions/" .. session_name
+        local cmd = "mksession ~/.vim/sessions/" .. session_name
         vim.cmd(cmd)
         print("Session saved as: " .. session_name)
     else
@@ -116,8 +103,3 @@ end
 vim.api.nvim_set_keymap('n', '<leader>S', ':lua save_session()<CR>', { noremap = true, silent = true })
 
 -- make a remap to run mksession ~/.vim/sessions/ and ask user for name input and append it to the directory
-vim.api.nvim_set_keymap('n', '<leader>rnv', '<Plug>RestNvim', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>rnp', '<Plug>RestNvimPreview', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>rnl', '<Plug>RestNvimLast', { noremap = true })
-
-vim.api.nvim_set_keymap('n', '<leader>mf', ':!npx eslint --fix %<CR>:e!<CR>', { noremap = true, silent = true })

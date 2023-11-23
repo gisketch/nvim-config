@@ -5,16 +5,10 @@ return {
         "hrsh7th/cmp-nvim-lsp",
         { "antosha417/nvim-lsp-file-operations", config = true },
     },
-    opts = {
-        inlay_hints = { enabled = true },
-    },
     config = function()
         -- vim.api.nvim_create_autocmd({ 'InsertEnter' }, {
         --     callback = function()  end,
         -- })
-        vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
-            callback = function() vim.lsp.inlay_hint(0, false) end,
-        })
         -- import lspconfig plugin
         local lspconfig = require("lspconfig")
 
@@ -85,10 +79,21 @@ return {
             on_attach = on_attach,
         })
 
+        local function organize_imports()
+            local params = {
+                command = "_typescript.organizeImports",
+                arguments = { vim.api.nvim_buf_get_name(0) },
+                title = ""
+            }
+            vim.lsp.buf.execute_command(params)
+        end
+
         -- configure typescript server with plugin
         lspconfig["tsserver"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            commands = {
+                OrganizeImports = { organize_imports, description = "Organize Imports" } },
             init_options = {
                 preferences = {
                     includeInlayParameterNameHints = "all",
