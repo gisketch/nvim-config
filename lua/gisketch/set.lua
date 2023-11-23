@@ -1,3 +1,17 @@
+vim.cmd [[
+    autocmd InsertEnter * :set norelativenumber
+]]
+
+vim.cmd [[
+    autocmd InsertLeave * :set relativenumber
+]]
+
+vim.cmd [[
+    autocmd BufWritePre * :%s/\s\+$//e
+]]
+
+vim.cmd([[set conceallevel=2]])
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -26,5 +40,5 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.fillchars='eob: '
+vim.opt.fillchars = 'eob: '
 -- vim.opt.colorcolumn = "80"

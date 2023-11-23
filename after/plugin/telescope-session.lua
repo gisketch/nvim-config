@@ -1,0 +1,12 @@
+-- require("telescope").setup({
+--     defaults = {
+--         sorting_strategy = "ascending",
+--     },
+--     extensions = {
+--         xray23 = {
+--             sessionDir = "/Users/Home/.vim/sessions",
+--         },
+--     },
+-- })
+-- -- loade telescope-session.nvim
+-- require("telescope").load_extension("xray23")

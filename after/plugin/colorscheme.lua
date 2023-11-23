@@ -6,5 +6,6 @@ vim.cmd.colorscheme "catppuccin"
 vim.cmd [[ hi LineNr guifg=#B4BEFE guibg=none ]]
 -- vim.cmd [[ hi LspInlayHint guifg=#8D90B9 guibg=none ]]
 vim.cmd [[ hi LspInlayHint gui=italic cterm=italic ]]
+vim.cmd [[ hi CodeiumSuggestion guifg=#6c7086 ]]
 -- vim.cmd [[ hi NoiceMini guifg=#c2caf1 guibg=#c2caf1 ]]
 

@@ -1,0 +1,1 @@
+return {'phelipetls/jsonpath.nvim'}
