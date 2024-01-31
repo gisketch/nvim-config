@@ -1,0 +1,1 @@
+return { 'sammce/fleeting.nvim' }

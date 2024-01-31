@@ -2,12 +2,13 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-        "hrsh7th/cmp-buffer",       -- source for text in buffer
-        "hrsh7th/cmp-path",         -- source for file system paths
-        "L3MON4D3/LuaSnip",         -- snippet engine
-        "saadparwaiz1/cmp_luasnip", -- for autocompletion
+        "hrsh7th/cmp-buffer",           -- source for text in buffer
+        "hrsh7th/cmp-path",             -- source for file system paths
+        "hrsh7th/cmp-cmdline",
+        "L3MON4D3/LuaSnip",             -- snippet engine
+        "saadparwaiz1/cmp_luasnip",     -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
-        "onsails/lspkind.nvim",     -- vs-code like pictograms
+        "onsails/lspkind.nvim",         -- vs-code like pictograms
     },
     config = function()
         local cmp = require("cmp")
@@ -21,8 +22,8 @@ return {
 
         cmp.setup({
             window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                -- completion = cmp.config.window.bordered(),
+                -- documentation = cmp.config.window.bordered(),
             },
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
@@ -35,16 +36,17 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ["<C-p>"] = cmp.mapping.select_prev_item(), -- previous suggestion
                 ["<C-n>"] = cmp.mapping.select_next_item(), -- next suggestion
-                ["<C-b>"] = cmp.mapping.complete(), -- show completion suggestions
-                ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+                ["<C-b>"] = cmp.mapping.complete(),         -- show completion suggestions
+                ["<C-e>"] = cmp.mapping.abort(),            -- close completion window
                 ["<CR>"] = cmp.mapping.confirm({ select = false }),
             }),
             -- sources for autocompletion
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
-                { name = "luasnip" }, -- snippets
-                { name = "buffer" }, -- text within current buffer
-                { name = "path" }, -- file system paths
+                { name = "buffer" },               -- text within current buffer
+                { name = "path" },                 -- file system paths
+                { name = "luasnip" },              -- snippets
+                { name = 'vim-dadbod-completion' } -- DBUI
             }),
             -- configure lspkind for vs-code like pictograms in completion menu
             formatting = {
@@ -53,6 +55,27 @@ return {
                     ellipsis_char = "...",
                 }),
             },
+        })
+        -- `/` cmdline setup.
+        cmp.setup.cmdline('/', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = {
+                { name = 'buffer' }
+            }
+        })
+        -- `:` cmdline setup.
+        cmp.setup.cmdline(':', {
+            mapping = cmp.mapping.preset.cmdline(),
+            sources = cmp.config.sources({
+                { name = 'path' }
+            }, {
+                {
+                    name = 'cmdline',
+                    option = {
+                        ignore_cmds = { 'Man', '!' }
+                    }
+                }
+            })
         })
     end,
 }

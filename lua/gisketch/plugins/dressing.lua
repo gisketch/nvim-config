@@ -117,7 +117,7 @@ return {
                     max_width = 80,
                     max_height = 40,
                     min_width = 40,
-                    min_height = 10,
+                    min_height = 20,
                 },
 
                 -- Options for built-in selector

@@ -3,7 +3,7 @@ require("barbecue").setup({
     -- this highlight is used to override other highlights
     -- you can take advantage of its `bg` and set a background throughout your winbar
     -- (e.g. basename will look like this: { fg = "#c0caf5", bold = true })
-    normal = { fg = "#c0caf5" },
+    normal = { fg = "#D8D3B7", bold = false },
 
     -- these highlights correspond to symbols table from config
     ellipsis = { fg = "#737aa2" },
@@ -11,7 +11,7 @@ require("barbecue").setup({
     modified = { fg = "#737aa2" },
 
     -- these highlights represent the _text_ of three main parts of barbecue
-    dirname = { fg = "#B4BEFE" },
+    dirname = { fg = "#D8D3B7" },
     basename = { bold = false},
     context = {},
 
