@@ -79,6 +79,10 @@ function DeleteSession()
     vim.cmd('Autosession delete')
 end
 
+function DeleteSession()
+    vim.cmd('Autosession delete')
+end
+
 function GitConflictChooseOurs()
     vim.cmd('GitConflictChooseOurs')
 end

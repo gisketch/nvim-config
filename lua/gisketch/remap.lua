@@ -101,7 +101,7 @@ vim.api.nvim_set_keymap(
 save_session = function()
     local session_name = vim.fn.input("Enter session name: ")
     if session_name ~= "" then
-        local cmd = "mksession! /home/gisketch/vimsessions/" .. session_name
+        local cmd = "mksession! ~/.vim/sessions/" .. session_name
         vim.cmd(cmd)
         print("Session saved as: " .. session_name)
     else
