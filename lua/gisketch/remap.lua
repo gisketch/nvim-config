@@ -46,7 +46,8 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+-- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>f", ":Format<CR>", { noremap = true, silent = true })
 
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")

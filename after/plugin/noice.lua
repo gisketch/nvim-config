@@ -7,7 +7,7 @@ require("noice").setup({
         },
         cmdline_popup = {
             win_options = {
-                winblend = 0,
+                winblend = 10,
             },
         },
     },

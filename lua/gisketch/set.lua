@@ -39,6 +39,7 @@ function ChangeHighlights()
         TelescopePreviewBorder = { bg = colors.sumiInk3, fg = colors.sumiInk3 },
         TelescopePromptTitle = { bg = colors.carpYellow, fg = colors.sumiInk1 },
         TelescopePreviewTitle = { bg = colors.springGreen, fg = colors.sumiInk1 },
+        TelescopeResultsTitle = { bg = colors.sumiInk3, fg = colors.sumiInk3 },
         -- Noice Highlights
         NoiceCmdlinePopup = { bg = colors.sumiInk3, fg = colors.oniViolet, italic = true },
         NoiceCmdlinePopupBorder = { bg = colors.sumiInk3, fg = colors.sumiInk3 },
@@ -55,7 +56,6 @@ function ChangeHighlights()
         NotifyDEBUGBody = { bg = colors.sumiInk2, fg = colors.fujiWhite },
         NotifyTRACEBorder = { bg = colors.sumiInk2, fg = colors.sumiInk2, italic = true },
         NotifyTRACEBody = { bg = colors.sumiInk2, fg = colors.fujiWhite },
-
         NotifyINFOTitle = { bg = colors.sumiInk2, fg = colors.springGreen },
         NotifyINFOIcon = { bg = colors.sumiInk2, fg = colors.springGreen },
         NotifyERRORTitle = { bg = colors.sumiInk2, fg = colors.waveRed },
@@ -66,6 +66,17 @@ function ChangeHighlights()
         NotifyDEBUGIcon = { bg = colors.sumiInk2, fg = colors.surimiOrange },
         NotifyTRACETitle = { bg = colors.sumiInk2, fg = colors.oniViolet },
         NotifyTRACEIcon = { bg = colors.sumiInk2, fg = colors.oniViolet },
+        -- Diagnostics Underlines
+        DiagnosticError = { fg = colors.waveRed },
+        DiagnosticWarn = { fg = colors.surimiOrange },
+        DiagnosticInfo = { fg = colors.oniViolet },
+        DiagnosticHint = { fg = colors.springGreen },
+        DiagnosticOk = { fg = colors.crystalBlue },
+        DiagnosticUnderlineError = { underline = true, sp = colors.waveRed },
+        DiagnosticUnderlineWarn = { underline = true, sp = colors.surimiOrange },
+        DiagnosticUnderlineInfo = { underline = true, sp = colors.oniViolet },
+        DiagnosticUnderlineHint = { underline = true, sp = colors.springGreen },
+        DiagnosticUnderlineOk = { underline = true, sp = colors.crystalBlue },
     }
 
     for hl, col in pairs(HighlightColors) do vim.api.nvim_set_hl(0, hl, col) end

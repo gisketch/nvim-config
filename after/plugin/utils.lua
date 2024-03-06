@@ -172,7 +172,7 @@ function SelectFunction()
         end
     end
 
-    vim.ui.select(choices, { prompt = "some utils i made :>" }, on_select)
+    vim.ui.select(choices, { prompt = " Utilities" }, on_select)
 end
 
 vim.api.nvim_set_keymap('n', '<leader>u', ':lua SelectFunction()<CR>', { noremap = true, silent = true })

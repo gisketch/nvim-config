@@ -33,9 +33,9 @@ require("telescope").setup {
         file_ignore_patterns = { "node_modules" },
         generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
         path_display = { "truncate" },
-        winblend = 0,
+        winblend = 5,
         border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        borderchars = { " ", " ", " ", " ", " ", " ", " ", " " },
         color_devicons = true,
         use_less = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
@@ -53,11 +53,11 @@ vim.keymap.set('n', '<leader>pf', function()
 end, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input("Find > ") });
+    builtin.grep_string({ search = vim.fn.input(" ") });
 end)
 
 function FindWord()
-    builtin.grep_string({ search = vim.fn.input("Find > ") });
+    builtin.grep_string({ search = vim.fn.input(" ") });
 end
 
 -- Find word everywhere
