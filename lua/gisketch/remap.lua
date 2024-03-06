@@ -139,7 +139,7 @@ vim.api.nvim_set_keymap('n', '<C-f>', '<C-w>w', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<M-x>', 'ZZ', { noremap = true, silent = true })
 
 -- vim.api.nvim_set_keymap('n', '<leader>e', ":lua MiniStarter.open()<CR>", { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>dd', "/<C-r><C-w><CR>", { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<leader>dd', "/<C-r><C-w><CR>", { noremap = true })
 
 -- query request
 vim.api.nvim_set_keymap('n', '<leader>xr', ":call VrcQuery()<CR>", { noremap = true })
@@ -181,7 +181,3 @@ end
 
 -- Create a keybinding in visual mode
 vim.api.nvim_set_keymap('x', '<leader>cb', ':lua surround_with_backticks()<CR>', { noremap = true, silent = true })
-
-
--- Git remaps
-vim.api.nvim_set_keymap('n', '<leader>gb', ':Git blame<CR>', { noremap = true, silent = true })

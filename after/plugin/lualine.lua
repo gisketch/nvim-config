@@ -1,6 +1,52 @@
-local catppuccin_theme = require "catppuccin.utils.lualine" "mocha"
-catppuccin_theme.normal.c.bg = nil
+local theme = require("kanagawa.colors").setup().theme
+local palette = require("kanagawa.colors").setup().palette
 
+local kanagawa = {}
+
+kanagawa.normal = {
+	a = { bg = theme.syn.fun, fg = theme.ui.bg_m3 },
+	b = { bg = theme.diff.change, fg = theme.syn.fun },
+	c = { bg = theme.ui.bg_p1, fg = theme.ui.fg },
+}
+
+kanagawa.terminal = {
+	a = { bg = palette.autumnGreen, fg = theme.ui.bg_m3 },
+	b = { bg = theme.diff.change, fg = theme.syn.fun },
+}
+
+kanagawa.insert = {
+	a = { bg = theme.diag.ok, fg = theme.ui.bg },
+	b = { bg = theme.ui.bg, fg = theme.diag.ok },
+}
+
+kanagawa.command = {
+	a = { bg = theme.syn.operator, fg = theme.ui.bg },
+	b = { bg = theme.ui.bg, fg = theme.syn.operator },
+}
+
+kanagawa.visual = {
+	a = { bg = theme.syn.keyword, fg = theme.ui.bg },
+	b = { bg = theme.ui.bg, fg = theme.syn.keyword },
+}
+
+kanagawa.replace = {
+	a = { bg = theme.syn.constant, fg = theme.ui.bg },
+	b = { bg = theme.ui.bg, fg = theme.syn.constant },
+}
+
+kanagawa.inactive = {
+	a = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+	b = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim, gui = "bold" },
+	c = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+}
+
+if vim.g.kanagawa_lualine_bold then
+	for _, mode in pairs(kanagawa) do
+		mode.a.gui = "bold"
+	end
+end
+
+kanagawa.normal.c.bg = nil
 
 function GetDir()
     -- Example command to get the current directory; adjust as needed
@@ -21,11 +67,11 @@ end
 
 require('lualine').setup {
     options = {
-        theme = catppuccin_theme,
+        theme = kanagawa,
         icons_enabled = true,
         component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
-            -- section_separators = { left = '', right = '' },
+        -- section_separators = { left = '', right = '' },
+            section_separators = { left = '', right = '' },
             -- section_separators = { left = '', right = '' },
             disabled_filetypes = {
                 statusline = {},
@@ -41,10 +87,10 @@ require('lualine').setup {
             }
         },
         sections = {
-            lualine_a = { { 'mode', separator = { right = '' }, right_padding = 2 } },
+            lualine_a = { { 'mode', separator = { right = '' }, right_padding = 2 } },
             -- section_separators = { left = '', right = '' },
             -- section_separators = { left = '', right = '' },
-            lualine_b = { { 'GetDir()', separator = { right = '' }, right_padding = 2 } },
+            lualine_b = { { 'GetDir()', separator = { right = '' }, right_padding = 2 } },
             lualine_c = { 'branch', 'diagnostics', "require('oil').get_current_dir()" },
             lualine_x = { 'getStatusString()', 'fancy_diff', 'fancy_macro' },
             lualine_y = { 'fancy_cwd', { "fileformat", symbols = { unix = "" } }

@@ -10,7 +10,6 @@ vim.cmd [[
     autocmd BufWritePre * :%s/\s\+$//e
 ]]
 
-
 vim.cmd [[
     augroup user_colors
         autocmd!

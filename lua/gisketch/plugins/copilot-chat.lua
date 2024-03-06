@@ -11,7 +11,7 @@ return {
             debug = false,                   -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
             model = 'gpt-4',                 -- GPT model to use
             temperature = 0.1,               -- GPT temperature
-            context = 'manual',              -- Context to use, 'buffers', 'buffer' or 'manual'
+            context = 'buffer',              -- Context to use, 'buffers', 'buffer' or 'manual'
             show_user_selection = true,      -- Shows user selection in chat
             show_system_prompt = false,      -- Shows system prompt in chat
             show_folds = true,               -- Shows folds for sections in chat
